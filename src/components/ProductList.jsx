@@ -3,7 +3,7 @@ import { fetcher } from "../helpers/fetcher"
 import Product from "./Product"
 
 const ProductList = () => {
-    const {data, error} = useSWR("http://localhost:3000/products", fetcher)
+    const {data, error} = useSWR("https://my-json-server.typicode.com/Kuanishbayev/unify-food-ordering/products", fetcher)
   return (
     <>
         {!data ? (
