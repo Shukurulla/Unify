@@ -1,11 +1,32 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "hello"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "products": [
+      {
+          "id": 0,
+          "image": "https://png.pngtree.com/png-vector/20240203/ourmid/pngtree-pepperoni-pizza-isolated-illustration-ai-generative-png-image_11535529.png",
+          "name": "Pepperoni",
+          "ingredients": ["mazzarella", "sir", "sauce"],
+          "price": 35000
+      },
+      {
+          "id": 1,
+          "image": "https://custompie.com/wp-content/uploads/2020/07/png-transparent-pizza-margherita-pizza-vegetarian-cuisine-italian-cuisine-food-pizza-capricciosa-ingredient-tomato-sauce-removebg-preview.png",
+          "name": "Margarita",
+          "ingredients": ["mazzarella", "sir", "sauce"],
+          "price": 40000
+      },
+      {
+          "id": 2,
+          "image": "https://www.pizzaesfizio2.it/wp-content/uploads/2020/09/Tavola-da-disegno-6.png",
+          "name": "Capricciosa",
+          "ingredients": ["mazzarella", "sir", "sauce"],
+          "price": 45000
+      },
+      {
+          "id": 3,
+          "image": "https://i0.wp.com/www.order.tonipizza.co.za/wp-content/uploads/2020/05/Pizza-15.png",
+          "name": "Romana",
+          "ingredients": ["mazzarella", "sir", "sauce"],
+          "price": 40000
+      }
+  ]
 }
