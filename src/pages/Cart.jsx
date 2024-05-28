@@ -37,7 +37,7 @@ const Cart = () => {
             <ul>
                 <li className='flex justify-between'>
                     <span>Summa:</span>
-                    <span>{formatCurrency(cartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0))}</span>
+                    <span>{formatCurrency(cartItems?.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0))}</span>
                 </li>
                 <li className='flex justify-between'>
                     <span>Promokod:</span>
