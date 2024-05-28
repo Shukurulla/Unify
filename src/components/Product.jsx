@@ -15,7 +15,7 @@ const Product = (props) => {
   const handleOrder = (id) => {
     setchecked(prev => !prev)
     if (isChecked) {
-      setCartItems(cartItems.filter(item => item.id !== id))
+      setCartItems(cartItems?.filter(item => item.id !== id))
     } else {
       setCartItems([...cartItems, {...props, quantity: 1}])
     }
