@@ -10,7 +10,6 @@ import { formatCurrency } from '../utilities/numberFormat'
 
 const Cart = () => {
     const {cartItems} = useContext(CartContext);
-    // console.log(cartItems);
   return (
     <div className='h-screen flex flex-col'>
         <div className='sticky top-0 flex justify-center items-center bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-br-2xl py-4 text-white text-xl font-bold'>
@@ -21,7 +20,7 @@ const Cart = () => {
         </div>
         <div className='grow'>
             <p className='text-xl py-4 px-2 font-bold'>Buyırtpańız</p>
-            {cartItems.length ? (
+            {cartItems?.length ? (
                 cartItems.map(product => (
                     <CartItem key={product.id} {...product} />
                 ))
