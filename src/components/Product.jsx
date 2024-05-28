@@ -9,7 +9,7 @@ const Product = (props) => {
   const [isChecked, setchecked] = useState(false)
 
   useEffect(() => {
-    setchecked(cartItems?.find(item => item.id === props.id))
+    setchecked(cartItems && cartItems.find(item => item.id === props.id))
   })
 
   const handleOrder = (id) => {
