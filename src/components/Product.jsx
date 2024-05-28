@@ -17,7 +17,11 @@ const Product = (props) => {
     if (isChecked) {
       setCartItems(cartItems?.filter(item => item.id !== id))
     } else {
-      setCartItems([...cartItems, {...props, quantity: 1}])
+      if (cartItems) {
+        setCartItems([...cartItems, {...props, quantity: 1}])
+      } else {
+        setCartItems([{...props, quantity: 1}])
+      }
     }
   }
 
