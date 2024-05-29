@@ -10,7 +10,7 @@ const Product = (props) => {
 
   useEffect(() => {
     setchecked(cartItems ? cartItems.find(item => item.id === props.id) : false)
-  })
+  }, [cartItems])
 
   const handleOrder = (id) => {
     setchecked(prev => !prev)
