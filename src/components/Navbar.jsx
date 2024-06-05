@@ -2,12 +2,12 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className='flex items-center justify-between bg-[#F6F4F2] px-4 font-bold'>
+    <nav className='sticky top-0 flex items-center justify-between bg-[#F6F4F2] p-4 font-bold rounded-br-3xl'>
         <div className='flex items-center gap-2'>
             <img src="./unify-logo.svg" alt="logo" className='w-8' />
             <span className='uppercase'>unify</span>
         </div>
-        <ul className='flex items-center'>
+        <ul className='flex items-center gap-2'>
             <li className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded px-2'>
                 <a href="tel:+998 90 702 53 29">+998 90 702 53 29</a>
             </li>

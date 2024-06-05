@@ -26,13 +26,13 @@ const Product = (props) => {
   }
 
   return (
-    <div className='relative bg-white w-[45%] rounded-md flex flex-col items-center pb-8'>
-        <div className='w-1/2'>
+    <div className='grow shadow-md relative bg-white w-[40%] rounded-3xl flex flex-col items-center pb-8 p-4'>
+        <div className='w-3/4'>
             <img src={props.image} alt="Product image" />
         </div>
         <p>{props.name}</p>
         <p className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent'>{formatCurrency(props.price)}</p>
-        <button onClick={() => handleOrder(props.id)} className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10 absolute top-full -translate-y-1/2 border-8 box-content border-[#F6F4F2]'>
+        <button onClick={() => handleOrder(props.id)} className='shadow-[0_0_20px_#8CD23C] bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10 absolute top-full -translate-y-1/2 box-content border-[#F6F4F2]'>
           {
             isChecked ? (
               <BsCheck className='mx-auto text-2xl' />              
