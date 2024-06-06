@@ -26,21 +26,23 @@ const Product = (props) => {
   }
 
   return (
-    <div className='grow shadow-md relative bg-white w-[40%] rounded-3xl flex flex-col items-center pb-8 p-4'>
-        <div className='w-3/4'>
-            <img src={props.image} alt="Product image" />
+    <div className='grow relative bg-white w-[40%] rounded-3xl flex flex-col items-center pb-8 p-4'>
+        <div className='size-28'>
+            <img className='mx-auto object-contain h-full' src={props.image} alt="Product image" />
         </div>
         <p>{props.name}</p>
         <p className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent'>{formatCurrency(props.price)}</p>
-        <button onClick={() => handleOrder(props.id)} className='shadow-[0_0_20px_#8CD23C] bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10 absolute top-full -translate-y-1/2 box-content border-[#F6F4F2]'>
-          {
-            isChecked ? (
-              <BsCheck className='mx-auto text-2xl' />              
-            ) : (
-              <GoPlus className='mx-auto text-2xl stroke-1' />              
-            )
-          }
-        </button>
+        <div className='absolute top-full -translate-y-1/2 border-8 border-[#F6F4F2] rounded-full curved'>
+          <button onClick={() => handleOrder(props.id)} className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10'>
+            {
+              isChecked ? (
+                <BsCheck className='mx-auto text-2xl' />              
+              ) : (
+                <GoPlus className='mx-auto text-2xl stroke-1' />              
+              )
+            }
+          </button>
+        </div>
     </div>
   )
 }

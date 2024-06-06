@@ -1,20 +1,31 @@
 import { CiSearch } from "react-icons/ci"
-import { hashtags, sortings } from "../data/db"
+import { hashtags, products } from "../data/db"
 import Navbar from "../components/Navbar"
 import { MdShoppingCart } from "react-icons/md"
 import { Link } from "react-router-dom"
-import ProductList from "../components/ProductList"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import Product from "../components/Product"
+import { CartContext } from "../context/CartContext"
 
 const Home = () => {
   const [clickedSortingItemIndex, setClickedSortingItemIndex] = useState(0)
   const [clickedHashtagItemIndex, setClickedHashtagItemIndex] = useState(null)
+  const [categories, setCategories] = useState(['All'])
+  const {cartItems} = useContext(CartContext)
+
+  products.map(item => {
+    if (!categories.includes(item.category)) {
+        setCategories([...categories, item.category])
+    }
+  })
+
   return (
     <div className='bg-gradient-to-r from-[#8CD23C] to-[#417A00]'>
       <Navbar />
       <Link to='cart'>
-        <div className="border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/20 to-[#417A00]/20 backdrop-blur-md fixed top-32 right-5">
+        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-32 right-5">
           <MdShoppingCart size={25} />
+          <span className="border-2 border-white rounded-full size-6 text-xs flex items-center justify-center absolute bottom-0 right-0 bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md">{cartItems.length}</span>
         </div>
       </Link>
       <div>
@@ -27,7 +38,7 @@ const Home = () => {
         </ul>
         <div className="p-4 text-white">
           <p className="uppercase text-4xl">10% shegirme birinshi ret ushın</p>
-          <p>"Birinshi qádemnen puldı tejeń: birinshi ret paydalanǵanıńızda, qálegen xizmetke 10% shegirme alıń! Biz benen birinshi ret paydalanıwıńız tek ǵana jaǵımlı bolıp qalmay, al paydalı da boladı!"</p>
+          <p className="font-extralight">"Birinshi qádemnen puldı tejeń: birinshi ret paydalanǵanıńızda, qálegen xizmetke 10% shegirme alıń! Biz benen birinshi ret paydalanıwıńız tek ǵana jaǵımlı bolıp qalmay, al paydalı da boladı!"</p>
         </div>
       </div>
       <div className="bg-[#F6F4F2] p-4">
@@ -37,15 +48,41 @@ const Home = () => {
         </label>
         <ul className="flex gap-4 overflow-scroll my-2 px-2">
           {
-            sortings.map((item, index) => (
-              <li onClick={() => setClickedSortingItemIndex(index)} key={index} className={`${clickedSortingItemIndex === index ? 'font-bold border-4 border-[#8CD23C] bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent' : 'bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white'} my-2 px-6 py-2 flex items-center rounded-full shadow-[0_0_10px_#8CD23C]`}>
-                {item}
-              </li>
+            categories.map((category, index) => (
+              <li onClick={() => setClickedSortingItemIndex(index)} disabled={clickedSortingItemIndex === index} key={category} className={`${clickedSortingItemIndex === index ? 'font-bold border-4 border-[#8CD23C] bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent' : 'bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white'} my-2 px-6 py-2 flex items-center rounded-full shadow-[0_0_10px_#8CD23C]`}>{category}</li>
             ))
           }
         </ul>
-        <div className="flex flex-wrap gap-4 gap-y-9 justify-between">
-          <ProductList />
+        <div>
+          {
+            clickedSortingItemIndex ? (
+              categories.filter(item => item === categories[clickedSortingItemIndex]).map(category => (
+                <div key={category}>
+                  <p className="font-bold pb-2 pt-5">{category}</p>
+                  <div className="flex flex-wrap gap-4 gap-y-9 justify-between">
+                    {
+                      products.filter(product => product.category === category).map(item => (
+                        <Product key={item.name} {...item} />
+                      ))
+                    }
+                  </div>
+                </div>
+              ))
+            ) : (
+              categories.map(category => (
+                <div key={category}>
+                  {category !== 'All' && <p className="font-bold pb-2 pt-5">{category}</p>}
+                  <div className="flex flex-wrap gap-4 gap-y-9 justify-between">
+                    {
+                      products.filter(product => product.category === category).map(item => (
+                        <Product key={item.name} {...item} />
+                      ))
+                    }
+                  </div>
+                </div>
+              ))
+            )
+          }
         </div>
       </div>
     </div>

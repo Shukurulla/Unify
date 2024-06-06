@@ -3,11 +3,9 @@ import { formatCurrency } from "../../utilities/numberFormat"
 import { CartContext } from "../../context/CartContext"
 
 const CartItem = ({id, image, name, ingredients, price, quantity}) => {
-  // const [quantity, setQuantity] = useState(1)
   const {cartItems, setCartItems} = useContext(CartContext)
 
   const increaseQuantity = (id) => {
-    // setQuantity(prev => prev + 1)
     setCartItems(cartItems.map(item => {
       if (item.id === id) {
         item.quantity += 1
