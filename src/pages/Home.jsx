@@ -12,6 +12,7 @@ const Home = () => {
   const [clickedHashtagItemIndex, setClickedHashtagItemIndex] = useState(null)
   const [categories, setCategories] = useState(['All'])
   const {cartItems} = useContext(CartContext)
+  const [searchInputValue, setSearchInputValue] = useState('')
 
   products.map(item => {
     if (!categories.includes(item.category)) {
@@ -44,18 +45,26 @@ const Home = () => {
       <div className="bg-[#F6F4F2] p-4">
         <label className="flex items-center gap-2 bg-white p-4 py-3 rounded-[50px_0_80px_50px]">
           <CiSearch />
-          <input type="text" placeholder="Izlew" className="grow outline-none" />
+          <input type="text" placeholder="Izlew" className="grow outline-none" value={searchInputValue} onChange={(e) => setSearchInputValue(e.target.value)} />
         </label>
         <ul className="flex gap-4 overflow-scroll my-2 px-2">
           {
             categories.map((category, index) => (
-              <li onClick={() => setClickedSortingItemIndex(index)} disabled={clickedSortingItemIndex === index} key={category} className={`${clickedSortingItemIndex === index ? 'font-bold border-4 border-[#8CD23C] bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent' : 'bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white'} my-2 px-6 py-2 flex items-center rounded-full shadow-[0_0_10px_#8CD23C]`}>{category}</li>
+              <li onClick={() => setClickedSortingItemIndex(index)} key={category} className={`${searchInputValue !== '' ? 'bg-stone-400 opacity-50' : clickedSortingItemIndex === index ? 'font-bold border-4 border-[#8CD23C] bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent' : 'bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white'} my-2 px-6 py-2 flex items-center rounded-full shadow-[0_0_10px_#8CD23C]`}>{category}</li>
             ))
           }
         </ul>
         <div>
           {
-            clickedSortingItemIndex ? (
+            searchInputValue !== '' ? (
+              <div className="flex flex-wrap gap-4 gap-y-9 justify-between">
+                {
+                  products.filter(item => searchInputValue !== '' ? item.name.toLowerCase().includes(searchInputValue.toLowerCase()) : item).map(item => (
+                    <Product key={item.name} {...item} />
+                  ))
+                }
+              </div>
+            ) : clickedSortingItemIndex ? (
               categories.filter(item => item === categories[clickedSortingItemIndex]).map(category => (
                 <div key={category}>
                   <p className="font-bold pb-2 pt-5">{category}</p>
