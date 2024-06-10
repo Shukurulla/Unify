@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GoPlus } from 'react-icons/go'
-import { CartContext } from '../context/CartContext'
+import { CartContext } from '../context/cart/CartContext'
 import { BsCheck } from 'react-icons/bs'
 import { formatCurrency } from '../utilities/numberFormat'
 
@@ -26,14 +26,14 @@ const Product = (props) => {
   }
 
   return (
-    <div className='grow relative bg-white w-[40%] rounded-3xl flex flex-col items-center pb-8 p-4'>
+    <div className='grow relative bg-white rounded-3xl flex flex-col items-center pb-8 p-4 shadow-[0_0_12px_0_#00000014]'>
         <div className='size-28'>
             <img className='mx-auto object-contain h-full' src={props.image} alt="Product image" />
         </div>
-        <p>{props.name}</p>
-        <p className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent'>{formatCurrency(props.price)}</p>
+        <p className='font-semibold'>{props.name}</p>
+        <p className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent font-semibold'>{formatCurrency(props.price)}</p>
         <div className='absolute top-full -translate-y-1/2 border-8 border-[#F6F4F2] rounded-full curved'>
-          <button onClick={() => handleOrder(props.id)} className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10'>
+          <button onClick={() => handleOrder(props.id)} className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10 shadow-[0_0_12px_0_#77AC63]'>
             {
               isChecked ? (
                 <BsCheck className='mx-auto text-2xl' />              

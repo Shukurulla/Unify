@@ -2,7 +2,7 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className='z-10 sticky top-0 flex items-center justify-between bg-[#F6F4F2] p-4 font-bold rounded-br-3xl'>
+    <nav className='z-10 sticky top-0 flex items-center justify-between bg-[#F6F4F2] p-4 font-bold rounded-br-[25px]'>
         <div className='flex items-center gap-2'>
             <img src="./unify-logo.svg" alt="logo" className='w-8' />
             <span className='uppercase'>unify</span>

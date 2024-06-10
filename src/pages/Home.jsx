@@ -5,7 +5,8 @@ import { MdShoppingCart } from "react-icons/md"
 import { Link } from "react-router-dom"
 import { useContext, useState } from "react"
 import Product from "../components/Product"
-import { CartContext } from "../context/CartContext"
+import { CartContext } from "../context/cart/CartContext"
+import { IoIosNotifications } from "react-icons/io"
 
 const Home = () => {
   const [clickedSortingItemIndex, setClickedSortingItemIndex] = useState(0)
@@ -23,6 +24,11 @@ const Home = () => {
   return (
     <div className='bg-gradient-to-r from-[#8CD23C] to-[#417A00]'>
       <Navbar />
+      <Link to='waiters'>
+        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-32 left-5">
+          <IoIosNotifications size={30} />
+        </div>
+      </Link>
       <Link to='cart'>
         <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-32 right-5">
           <MdShoppingCart size={25} />

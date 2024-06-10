@@ -2,6 +2,73 @@ export const sortings = ['Pizza', 'Burger', 'Haggi', 'Ishimlik']
 
 export const hashtags = ['Palız ónimleri', 'Jaǵımlı', 'QQR', 'Taza ónimler']
 
+export const waiters = [
+    {
+        "id": 0,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    },
+    {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    },
+    {
+        "id": 2,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    },
+    {
+        "id": 3,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    },
+    {
+        "id": 4,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    },
+    {
+        "id": 5,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    },
+    {
+        "id": 6,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    },
+    {
+        "id": 7,
+        "firstName": "John",
+        "lastName": "Doe",
+        "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww",
+        "service": 5,
+        "stars": 4
+    }
+]
+
 export const products = [
     {
         "id": 0,
