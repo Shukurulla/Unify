@@ -31,3 +31,7 @@ body {
   border-bottom-left-radius: 20px;
   box-shadow: -4px 6px 0 0 #F6F4F2;
 }
+
+.wrapper {
+  background-image: linear-gradient(#F6F4F2 50%, transparent 50%);
+}

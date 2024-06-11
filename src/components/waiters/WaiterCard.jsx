@@ -8,14 +8,15 @@ const WaiterCard = (props) => {
   const { setWaiterCardPreview } = useContext(WaiterPreviewContext)
 
   return (
-    <div onClick={() => setWaiterCardPreview(props)} className='grow relative bg-white rounded-3xl flex flex-col items-center pb-8 p-4 shadow-[0_0_12px_0_#00000014]'>
+    <div onClick={() => setWaiterCardPreview(props)} className='grow relative bg-white rounded-3xl flex flex-col items-center pb-8 p-4 shadow-[0_-7px_10px_0_#00000014]'>
         <div className='size-28 rounded-full overflow-hidden flex justify-center items-center'>
             <img src={props.image} alt="Product image" />
         </div>
         <p className='font-semibold'>{props.lastName[0] + '. ' + props.firstName}</p>
         <p className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent font-semibold'>Xizmet {props.service}%</p>
-        <div onClick={e => e.stopPropagation()} className='absolute top-full -translate-y-1/2 border-8 border-[#F6F4F2] rounded-full curved'>
-          <button onClick={() => setchecked(prev => !prev)} className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10 shadow-[0_0_12px_0_#77AC63]'>
+        <div onClick={e => e.stopPropagation()} className='absolute top-full -translate-y-1/2 rounded-full size-16 flex justify-center items-center wrapper'>
+          <div className="rounded-br-[20px] shadow-[4px_6px_0_0_#F6F4F2] size-5 absolute left-[-16px] top-[12px]"></div>
+          <button onClick={() => setchecked(prev => !prev)} className='z-[1] bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10 shadow-[0_0_12px_0_#77AC63]'>
             {
               isChecked ? (
                 <BsCheck className='mx-auto text-2xl' />
@@ -24,6 +25,7 @@ const WaiterCard = (props) => {
               )
             }
           </button>
+          <div className="rounded-bl-[20px] shadow-[-4px_6px_0_0_#F6F4F2] size-5 absolute right-[-16px] top-[12px]"></div>
         </div>
     </div>
   )
