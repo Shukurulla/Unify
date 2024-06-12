@@ -11,7 +11,7 @@ import { IoIosNotifications } from "react-icons/io"
 const Home = () => {
   const [clickedSortingItemIndex, setClickedSortingItemIndex] = useState(0)
   const [clickedHashtagItemIndex, setClickedHashtagItemIndex] = useState(null)
-  const [categories, setCategories] = useState(['All'])
+  const [categories, setCategories] = useState(['Hámmesi'])
   const {cartItems} = useContext(CartContext)
   const [searchInputValue, setSearchInputValue] = useState('')
 
@@ -25,24 +25,24 @@ const Home = () => {
     <div className='bg-gradient-to-r from-[#8CD23C] to-[#417A00]'>
       <Navbar />
       <Link to='waiters'>
-        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-32 left-5">
+        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-20 left-5">
           <IoIosNotifications size={30} />
         </div>
       </Link>
       <Link to='cart'>
-        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-32 right-5">
+        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-20 right-5">
           <MdShoppingCart size={25} />
           <span className="border-2 border-white rounded-full size-6 text-xs flex items-center justify-center absolute bottom-0 right-0 bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md">{cartItems.length}</span>
         </div>
       </Link>
       <div>
-        <ul className="flex gap-2 overflow-scroll p-4">
+        {/* <ul className="flex gap-2 overflow-scroll p-4">
           {
             hashtags.map((hashtag, index) => (
               <li key={index} onClick={() => setClickedHashtagItemIndex(index)} className={`border-2 border-white p-2 px-4 rounded-full uppercase whitespace-nowrap text-sm ${clickedHashtagItemIndex === index ? 'bg-white font-bold' : 'text-white'}`}>#{hashtag}</li>
             ))
           }
-        </ul>
+        </ul> */}
         <div className="p-4 text-white">
           <p className="uppercase text-4xl">10% shegirme birinshi ret ushın</p>
           <p className="font-extralight">"Birinshi qádemnen puldı tejeń: birinshi ret paydalanǵanıńızda, qálegen xizmetke 10% shegirme alıń! Biz benen birinshi ret paydalanıwıńız tek ǵana jaǵımlı bolıp qalmay, al paydalı da boladı!"</p>
@@ -86,7 +86,7 @@ const Home = () => {
             ) : (
               categories.map(category => (
                 <div key={category}>
-                  {category !== 'All' && <p className="font-bold pb-2 pt-5">{category}</p>}
+                  {category !== 'Hámmesi' && <p className="font-bold pb-2 pt-5">{category}</p>}
                   <div className="flex flex-wrap gap-4 gap-y-9 justify-between">
                     {
                       products.filter(product => product.category === category).map(item => (

@@ -7,11 +7,11 @@ const WaiterCardPreviewModal = () => {
 
   return (
     <div onClick={() => setWaiterCardPreview(null)} className={waiterCardPreview ? 'z-20 bg-black/20 backdrop-blur-sm fixed size-full flex justify-center items-center' : 'hidden'}>
-        <div onClick={e => e.stopPropagation()} className='w-fit bg-white rounded-3xl flex flex-col items-center p-4 px-6'>
+        <div onClick={e => e.stopPropagation()} className='w-fit bg-white rounded-[20px] flex flex-col items-center gap-2 p-4 px-6 max-w-[45%]'>
             <div className='size-28 rounded-full overflow-hidden flex justify-center items-center'>
-                <img src={waiterCardPreview?.image} alt="Product image" />
+                <img src={`./waiter-images/${waiterCardPreview?.image}`} alt="Product image" />
             </div>
-            <p className='font-semibold'>{waiterCardPreview?.lastName + ' ' + waiterCardPreview?.firstName}</p>
+            <p className='font-semibold text-center'>{waiterCardPreview?.lastName + ' ' + waiterCardPreview?.firstName}</p>
             <div className='flex gap-1'>
                 {
                     Array(5).fill(0).map((item, index) => (

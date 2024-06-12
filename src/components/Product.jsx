@@ -26,11 +26,11 @@ const Product = (props) => {
   }
 
   return (
-    <div className='grow relative bg-white rounded-3xl flex flex-col items-center pb-8 p-4 shadow-[0_-7px_10px_0_#00000014]'>
+    <div className='grow relative bg-white rounded-[20px] flex flex-col items-center pb-12 p-4 shadow-[0_-4px_14px_0_#00000014]'>
         <div className='size-28'>
-            <img className='mx-auto object-contain h-full' src={props.image} alt="Product image" />
+            <img className='mx-auto object-contain h-full' src={`./product-images/${props.image}`} alt="Product image" />
         </div>
-        <p className='font-semibold'>{props.name}</p>
+        <p className='font-semibold pt-2'>{props.name}</p>
         <p className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent font-semibold'>{formatCurrency(props.price)}</p>
         <div className='absolute top-full -translate-y-1/2 rounded-full size-16 flex justify-center items-center wrapper'>
           <div className="rounded-br-[20px] shadow-[4px_6px_0_0_#F6F4F2] size-5 absolute left-[-16px] top-[12px]"></div>
