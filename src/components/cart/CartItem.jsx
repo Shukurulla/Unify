@@ -4,10 +4,11 @@ import { CartContext } from "../../context/cart/CartContext"
 
 const CartItem = ({id, image, name, ingredients, price, quantity}) => {
   const {cartItems, setCartItems} = useContext(CartContext)
+  const MAX_ORDER_COUNT = 15
 
   const increaseQuantity = (id) => {
     setCartItems(cartItems.map(item => {
-      if (item.id === id) {
+      if (item.id === id && item.quantity < MAX_ORDER_COUNT) {
         item.quantity += 1
       }
       return item
