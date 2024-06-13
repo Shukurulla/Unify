@@ -9,7 +9,7 @@ const Navbar = () => {
         </div>
         <ul className='flex items-center gap-2'>
             <li className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded px-2'>
-                <a href="tel:+998 90 702 53 29">+998 90 702 53 29</a>
+                <a href="tel:+998 90 702 53 29">+998 91 255 52 60</a>
             </li>
             <li>
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
