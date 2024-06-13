@@ -1,5 +1,5 @@
 import { CiSearch } from "react-icons/ci"
-import { hashtags, products } from "../data/db"
+import { products } from "../data/db"
 import Navbar from "../components/Navbar"
 import { MdShoppingCart } from "react-icons/md"
 import { Link } from "react-router-dom"
@@ -10,7 +10,6 @@ import { IoIosNotifications } from "react-icons/io"
 
 const Home = () => {
   const [clickedSortingItemIndex, setClickedSortingItemIndex] = useState(0)
-  const [clickedHashtagItemIndex, setClickedHashtagItemIndex] = useState(null)
   const [categories, setCategories] = useState(['Hámmesi'])
   const {cartItems} = useContext(CartContext)
   const [searchInputValue, setSearchInputValue] = useState('')
@@ -36,13 +35,6 @@ const Home = () => {
         </div>
       </Link>
       <div>
-        {/* <ul className="flex gap-2 overflow-scroll p-4">
-          {
-            hashtags.map((hashtag, index) => (
-              <li key={index} onClick={() => setClickedHashtagItemIndex(index)} className={`border-2 border-white p-2 px-4 rounded-full uppercase whitespace-nowrap text-sm ${clickedHashtagItemIndex === index ? 'bg-white font-bold' : 'text-white'}`}>#{hashtag}</li>
-            ))
-          }
-        </ul> */}
         <div className="p-4 text-white">
           <p className="uppercase text-4xl">10% shegirme birinshi ret ushın</p>
           <p className="font-extralight">"Birinshi qádemnen puldı tejeń: birinshi ret paydalanǵanıńızda, qálegen xizmetke 10% shegirme alıń! Biz benen birinshi ret paydalanıwıńız tek ǵana jaǵımlı bolıp qalmay, al paydalı da boladı!"</p>
