@@ -3,7 +3,7 @@ import { products } from "../data/db"
 import Navbar from "../components/Navbar"
 import { MdShoppingCart } from "react-icons/md"
 import { Link } from "react-router-dom"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import Product from "../components/Product"
 import { CartContext } from "../context/cart/CartContext"
 import { IoIosNotifications } from "react-icons/io"
@@ -15,6 +15,8 @@ const Home = () => {
   const {cartItems} = useContext(CartContext)
   const [searchInputValue, setSearchInputValue] = useState('')
   const [floatingButtonIsOpen, setFloatingButton] = useState(false)
+  const waitersRef = useRef()
+  const cartRef = useRef()
 
   products.map(item => {
     if (!categories.includes(item.category)) {
@@ -23,24 +25,38 @@ const Home = () => {
   })
 
 
-  const handleAnimation = (e) => {
-    e.target.className = 'border'
-  }
+  // const handleAnimation = (e) => {
+  //   if (e.target.classList.contains('opacity-0')) {
+  //     e.target.classList.add('invisible')
+  //   }
+  // }
+
+  useEffect(() => {
+    if (floatingButtonIsOpen) {
+      cartRef.current.classList.remove('invisible')
+      waitersRef.current.classList.remove('invisible')
+    } else {
+      setTimeout(() => {
+        cartRef.current.classList.add('invisible')
+        waitersRef.current.classList.add('invisible')
+      }, 300);
+    }
+  }, [floatingButtonIsOpen])
 
 
   return (
     <div className='bg-gradient-to-r from-[#8CD23C] to-[#417A00]'>
       <Navbar />
       <div className="z-10 fixed bottom-10 left-1/2 -translate-x-1/2">
-        <button onClick={() => setFloatingButton(prev => !prev)} className={`border-2 border-white size-10 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] opacity-70 backdrop-blur-md ease-in-out duration-300 ${floatingButtonIsOpen && 'opacity-100 scale-150 shadow-xl'}`}>
+        <button onClick={() => setFloatingButton(prev => !prev)} className={`border-2 border-white size-10 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md ease-in-out duration-300 ${floatingButtonIsOpen ? 'opacity-100 scale-150 shadow-xl' : 'opacity-70'}`}>
           <GoPlus className={`mx-auto text-2xl stroke-1 duration-300 ease ${floatingButtonIsOpen && 'rotate-45'}`} />
         </button>
-        <Link to='waiters' className={`absolute bottom-40 left-1/2 -translate-x-1/2 transition scale-50 ease duration-300 delay-150 opacity-0 ${floatingButtonIsOpen ? 'visible scale-100 opacity-100' : 'invisible'}`}>
+        <Link ref={waitersRef} to='waiters' className={`absolute bottom-40 left-1/2 -translate-x-1/2 transition ease duration-300 delay-150 opacity-0 ${floatingButtonIsOpen ? 'visible scale-100 opacity-100' : 'scale-50'}`} >
           <div className='shadow-xl border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md'>
             <IoIosNotifications size={30} />
           </div>
         </Link>
-        <Link to='cart' className={`absolute bottom-20 left-1/2 -translate-x-1/2 transition scale-50 ease duration-300 delay-75 opacity-0 ${floatingButtonIsOpen ? 'visible scale-100 opacity-100' : 'invisible'}`}>
+        <Link ref={cartRef} to='cart' className={`absolute bottom-20 left-1/2 -translate-x-1/2 transition ease duration-300 delay-75 opacity-0 ${floatingButtonIsOpen ? 'visible scale-100 opacity-100' : 'scale-50'}`} >
           <div className='shadow-xl border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md'>
             <MdShoppingCart size={25} />
             <span className="border-2 border-white rounded-full size-6 text-xs flex items-center justify-center absolute bottom-0 right-0 bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md">{cartItems.length}</span>
