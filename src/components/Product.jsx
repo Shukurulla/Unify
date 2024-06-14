@@ -37,9 +37,9 @@ const Product = (props) => {
           <button onClick={() => handleOrder(props.id)} className='z-[1] bg-gradient-to-r from-[#8CD23C] to-[#417A00] text-white rounded-full size-10 shadow-[0_0_12px_0_#77AC63]'>
             {
               isChecked ? (
-                <BsCheck className='mx-auto text-2xl' />              
+                <BsCheck className='mx-auto text-2xl' />
               ) : (
-                <GoPlus className='mx-auto text-2xl stroke-1' />              
+                <GoPlus className='mx-auto text-2xl stroke-1' />
               )
             }
           </button>

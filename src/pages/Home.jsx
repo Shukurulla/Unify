@@ -7,12 +7,14 @@ import { useContext, useState } from "react"
 import Product from "../components/Product"
 import { CartContext } from "../context/cart/CartContext"
 import { IoIosNotifications } from "react-icons/io"
+import { GoPlus } from "react-icons/go"
 
 const Home = () => {
   const [clickedSortingItemIndex, setClickedSortingItemIndex] = useState(0)
   const [categories, setCategories] = useState(['Hámmesi'])
   const {cartItems} = useContext(CartContext)
   const [searchInputValue, setSearchInputValue] = useState('')
+  const [floatingButtonIsOpen, setFloatingButton] = useState(false)
 
   products.map(item => {
     if (!categories.includes(item.category)) {
@@ -20,20 +22,31 @@ const Home = () => {
     }
   })
 
+
+  const handleAnimation = (e) => {
+    e.target.className = 'border'
+  }
+
+
   return (
     <div className='bg-gradient-to-r from-[#8CD23C] to-[#417A00]'>
       <Navbar />
-      <Link to='waiters'>
-        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-20 left-5">
-          <IoIosNotifications size={30} />
-        </div>
-      </Link>
-      <Link to='cart'>
-        <div className="z-10 border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C]/70 to-[#417A00]/70 backdrop-blur-md fixed top-20 right-5">
-          <MdShoppingCart size={25} />
-          <span className="border-2 border-white rounded-full size-6 text-xs flex items-center justify-center absolute bottom-0 right-0 bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md">{cartItems.length}</span>
-        </div>
-      </Link>
+      <div className="z-10 fixed bottom-10 left-1/2 -translate-x-1/2">
+        <button onClick={() => setFloatingButton(prev => !prev)} className={`border-2 border-white size-10 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] opacity-70 backdrop-blur-md ease-in-out duration-300 ${floatingButtonIsOpen && 'opacity-100 scale-150 shadow-xl'}`}>
+          <GoPlus className={`mx-auto text-2xl stroke-1 duration-300 ease ${floatingButtonIsOpen && 'rotate-45'}`} />
+        </button>
+        <Link to='waiters' className={`absolute bottom-40 left-1/2 -translate-x-1/2 transition scale-50 ease duration-300 delay-150 opacity-0 ${floatingButtonIsOpen ? 'visible scale-100 opacity-100' : 'invisible'}`}>
+          <div className='shadow-xl border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md'>
+            <IoIosNotifications size={30} />
+          </div>
+        </Link>
+        <Link to='cart' className={`absolute bottom-20 left-1/2 -translate-x-1/2 transition scale-50 ease duration-300 delay-75 opacity-0 ${floatingButtonIsOpen ? 'visible scale-100 opacity-100' : 'invisible'}`}>
+          <div className='shadow-xl border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md'>
+            <MdShoppingCart size={25} />
+            <span className="border-2 border-white rounded-full size-6 text-xs flex items-center justify-center absolute bottom-0 right-0 bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md">{cartItems.length}</span>
+          </div>
+        </Link>
+      </div>
       <div>
         <div className="p-4 text-white">
           <p className="uppercase text-4xl">10% shegirme birinshi ret ushın</p>
