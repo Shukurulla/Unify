@@ -9,6 +9,7 @@ import { formatCurrency } from '../utilities/numberFormat'
 
 const Cart = () => {
     const {cartItems} = useContext(CartContext);
+    const totalPrice = formatCurrency(cartItems?.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0))
 
   return (
     <div className='h-screen flex flex-col'>
@@ -49,7 +50,7 @@ const Cart = () => {
             <ul className='font-bold'>
                 <li className='flex justify-between'>
                     <span>Summa:</span>
-                    <span className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent'>{formatCurrency(cartItems?.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0))}</span>
+                    <span className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent'>{totalPrice}</span>
                 </li>
                 <li className='flex justify-between'>
                     <span className='text-[#707B81]'>Promokod:</span>
@@ -57,7 +58,7 @@ const Cart = () => {
                 </li>
                 <li className='flex justify-between'>
                     <span>Jámi:</span>
-                    <span className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent'>0</span>
+                    <span className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent'>{totalPrice}</span>
                 </li>
             </ul>
             <button className='bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-full py-3 text-white font-semibold text-xl'>Buyırıw</button>
