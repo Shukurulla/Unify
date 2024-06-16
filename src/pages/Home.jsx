@@ -69,6 +69,9 @@ const Home = () => {
           </div>
           <img src={HeroImg} alt="Hero image" />
         </div>
+        <svg className="w-full mb-4" width="6" height="24" viewBox="0 0 6 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 24L5.88675 19L0.113248 19L3 24ZM2.5 -2.18557e-08L2.5 19.5L3.5 19.5L3.5 2.18557e-08L2.5 -2.18557e-08Z" fill="white"/>
+        </svg>
       </div>
       <div className="bg-[#F6F4F2] p-4">
         <label className="flex items-center gap-2 bg-white p-4 py-3 rounded-[50px_0_80px_50px]">
