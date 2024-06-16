@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { GoPlus } from 'react-icons/go'
 import { CartContext } from '../context/cart/CartContext'
 import { BsCheck } from 'react-icons/bs'
