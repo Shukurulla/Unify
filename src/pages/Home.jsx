@@ -8,6 +8,8 @@ import Product from "../components/Product"
 import { CartContext } from "../context/cart/CartContext"
 import { IoIosNotifications } from "react-icons/io"
 import { GoPlus } from "react-icons/go"
+import HeroImg from '../assets/hero-image.png'
+import DiscountImg from '../assets/discount.png'
 
 const Home = () => {
   const [clickedSortingItemIndex, setClickedSortingItemIndex] = useState(0)
@@ -23,13 +25,6 @@ const Home = () => {
         setCategories([...categories, item.category])
     }
   })
-
-
-  // const handleAnimation = (e) => {
-  //   if (e.target.classList.contains('opacity-0')) {
-  //     e.target.classList.add('invisible')
-  //   }
-  // }
 
   useEffect(() => {
     if (floatingButtonIsOpen) {
@@ -65,8 +60,14 @@ const Home = () => {
       </div>
       <div>
         <div className="p-4 text-white">
-          <p className="uppercase text-4xl">10% shegirme birinshi ret ushın</p>
-          <p className="font-extralight">"Birinshi qádemnen puldı tejeń: birinshi ret paydalanǵanıńızda, qálegen xizmetke 10% shegirme alıń! Biz benen birinshi ret paydalanıwıńız tek ǵana jaǵımlı bolıp qalmay, al paydalı da boladı!"</p>
+          <p className="uppercase text-2xl font-medium">Sizge jetkerip berilgen mazalı minutlar</p>
+          <p className="text-sm">Bizlerdiń aspazımızdan sizdiń stolıńızǵa - muhabbat hám ǵamxorlıq penen</p>
+        </div>
+        <div className="relative">
+          <div className="absolute w-32">
+            <img src={DiscountImg} alt="Discount image" />
+          </div>
+          <img src={HeroImg} alt="Hero image" />
         </div>
       </div>
       <div className="bg-[#F6F4F2] p-4">
