@@ -49,7 +49,7 @@ const Home = () => {
           <FaCartShopping className={`absolute bottom-[45%] ${floatingButtonIsOpen ? 'right-0 opacity-0' : 'right-1/2'} transition-all`} />
           <div className="w-[2px] h-8 bg-white rounded-full rotate-45 absolute"></div>
           <div className={`w-[2px] h-8 bg-white rounded-full ${floatingButtonIsOpen ? '-rotate-45' : 'rotate-45'} transition-all absolute`}></div>
-          <FaBellConcierge className={`absolute top-[45%] left-1/2  ${floatingButtonIsOpen ? 'left-0 opacity-0' : 'left-1/2'} transition-all`} />
+          <FaBellConcierge className={`absolute top-[45%] ${floatingButtonIsOpen ? 'left-0 opacity-0' : 'left-1/2'} transition-all`} />
         </button>
         <Link ref={waitersRef} to='waiters' className={`absolute bottom-40 left-1/2 -translate-x-1/2 transition ease duration-300 delay-150 opacity-0 ${floatingButtonIsOpen ? 'scale-100 opacity-100' : 'scale-50'}`} >
           <div className='shadow-xl border-2 border-white size-16 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md'>
