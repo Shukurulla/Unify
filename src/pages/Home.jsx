@@ -78,7 +78,7 @@ const Home = () => {
           <path d="M3 24L5.88675 19L0.113248 19L3 24ZM2.5 -2.18557e-08L2.5 19.5L3.5 19.5L3.5 2.18557e-08L2.5 -2.18557e-08Z" fill="white"/>
         </svg>
       </div>
-      <div className="bg-[#F6F4F2] p-4">
+      <div className="bg-[#F6F4F2] p-4 rounded-tl-3xl">
         <label className="flex items-center gap-2 bg-white p-4 py-3 rounded-[50px_0_80px_50px]">
           <CiSearch />
           <input type="text" placeholder="Izlew" className="grow outline-none" value={searchInputValue} onChange={(e) => setSearchInputValue(e.target.value)} />
