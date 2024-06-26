@@ -43,7 +43,7 @@ const Home = () => {
     <div className='bg-gradient-to-r from-[#8CD23C] to-[#417A00]'>
       <Navbar />
       <div className="z-10 fixed bottom-10 left-1/2 -translate-x-1/2">
-        <button onClick={() => setFloatingButton(prev => !prev)} className={`border-2 border-white size-10 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md ease-in-out duration-300 ${floatingButtonIsOpen && 'scale-150 shadow-xl'}`}>
+        <button onClick={() => setFloatingButton(prev => !prev)} className={`shadow-[0_0_12px_0_#77AC63] size-10 text-white flex justify-center items-center rounded-full bg-gradient-to-r from-[#8CD23C] to-[#417A00] backdrop-blur-md ease-in-out duration-300 ${floatingButtonIsOpen && 'scale-150 shadow-xl'}`}>
           <GoPlus className={`mx-auto text-2xl stroke-1 duration-300 ease ${floatingButtonIsOpen && 'rotate-45'}`} />
         </button>
         <Link ref={waitersRef} to='waiters' className={`absolute bottom-40 left-1/2 -translate-x-1/2 transition ease duration-300 delay-150 opacity-0 ${floatingButtonIsOpen ? 'scale-100 opacity-100' : 'scale-50'}`} >
