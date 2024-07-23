@@ -8,7 +8,7 @@ const WaiterCard = (props) => {
   const { setWaiterCardPreview } = useContext(WaiterPreviewContext)
 
   return (
-    <div onClick={() => setWaiterCardPreview(props)} className='grow h-fit relative bg-white rounded-[20px] flex flex-col items-center pb-10 p-4 '>
+    <div onClick={() => setWaiterCardPreview(props)} className='grow h-fit relative bg-white rounded-[20px] flex flex-col items-center pb-10 p-4'>
         <div className='size-28 rounded-full overflow-hidden flex justify-start items-center'>
             <img src={`./waiter-images/${props.image}`} alt="Product image" />
         </div>

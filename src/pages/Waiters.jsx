@@ -6,7 +6,7 @@ import WaiterCardPreviewModal from '../components/waiters/WaiterCardPreviewModal
 
 const Waiters = () => {
   return (
-    <div className='min-h-screen flex flex-col bg-[#F6F4F2]'>
+    <div className='min-h-screen flex flex-col bg-[#F6F4F2] pb-9'>
         <div className='z-10 sticky top-0'>
           <div className='flex justify-center items-center bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-bl-[25px] py-4 text-white text-xl font-bold'>
             <Link to='/' className='absolute right-4'>
