@@ -7,17 +7,21 @@ import Product from "../components/Product";
 import { FaBellConcierge, FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import CartItem from "../components/cart/CartItem";
+import Loading from "../components/loading";
 
 const Home = () => {
   const { categories } = useSelector((state) => state.category);
   const { dishes } = useSelector((state) => state.dish);
+  const { isLoading } = useSelector((state) => state.restaurant);
   const { selectedProduts } = useSelector((state) => state.product);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [floatingButtonIsOpen, setFloatingButton] = useState(false);
   const waitersRef = useRef();
   const cartRef = useRef();
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="bg-gradient-to-r from-[#8CD23C] to-[#417A00]">
       <Navbar />
       <div className="z-10 fixed bottom-10 left-1/2 -translate-x-1/2">

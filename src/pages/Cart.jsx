@@ -16,6 +16,7 @@ const Cart = () => {
   const { dishes } = useSelector((state) => state.dish);
   const [code, setCode] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const { table } = useSelector((state) => state.table);
 
   let totalPrice =
     code && code.worked == false && code.discount
@@ -40,8 +41,8 @@ const Cart = () => {
     const orderSchema = {
       restaurantId: localStorage.getItem("userId"),
       tableNumber: {
-        id: "66dde68a4119697e189a14b1",
-        number: 1,
+        id: table._id,
+        number: table.tableNumber,
       },
       items: selectedProduts,
       totalPrice,
@@ -71,7 +72,7 @@ const Cart = () => {
         <Link to="/" className="absolute left-4">
           <IoIosArrowBack />
         </Link>
-        <p>&#8470; 19</p>
+        <p>&#8470; {table.tableNumber}</p>
       </div>
       <div className="grow pb-4">
         <p className="text-center text-xl py-4 px-2 font-bold">Buyırtpańız:</p>
