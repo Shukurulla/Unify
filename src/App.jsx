@@ -1,25 +1,29 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Cart from './pages/Cart'
-import Home from './pages/Home'
-import CartContextProvider from './context/cart/CartContextProvider'
-import Waiters from './pages/Waiters'
-import WaiterPreviewContextProvider from './context/waiters/WaiterPreviewContextProvider'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Cart from "./pages/Cart";
+import Home from "./pages/Home";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import DishService from "./service/dish.service";
+import CategoryService from "./service/category.service";
+import RestaurantService from "./service/restauran.service";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    RestaurantService.getRestaurant(dispatch);
+    DishService.getDish(dispatch);
+    CategoryService.getCategory(dispatch);
+  }, []);
 
   return (
-    <CartContextProvider>
-      <WaiterPreviewContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="waiters" element={<Waiters />} />
-          </Routes>
-        </BrowserRouter>
-      </WaiterPreviewContextProvider>
-    </CartContextProvider>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="cart" element={<Cart />} />
+        {/* <Route path="waiters" element={<Waiters />} /> */}
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
