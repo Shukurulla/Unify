@@ -41,7 +41,7 @@ const Cart = () => {
     const orderSchema = {
       restaurantId: localStorage.getItem("userId"),
       tableNumber: {
-        id: table._id,
+        id: table._id ? table._id : localStorage.getItem("tableId"),
         number: table.tableNumber,
       },
       items: selectedProduts,
