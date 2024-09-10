@@ -10,10 +10,24 @@ import Sign from "./pages/sign";
 
 function App() {
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.restaurant);
+
+  const fetchTable = async (tableId) => {
+    const { data } = await axios.get(`/table/table/${tableId}`);
+
+    dispatch(getTableSuccess(data));
+    if (data) {
+      localStorage.setItem("tableId", data._id);
+      navigate("/");
+      // window.location.reload();
+    }
+  };
+
   useEffect(() => {
     if (localStorage.getItem("userId")) {
       RestaurantService.getRestaurant(dispatch, localStorage.getItem("userId"));
+    }
+    if (localStorage.getItem("tableId")) {
+      fetchTable(localStorage.getItem("tableId"));
     }
     DishService.getDish(dispatch);
     CategoryService.getCategory(dispatch);
