@@ -7,6 +7,7 @@ import DishService from "./service/dish.service";
 import CategoryService from "./service/category.service";
 import RestaurantService from "./service/restauran.service";
 import Sign from "./pages/sign";
+import axios from "./service/api";
 
 function App() {
   const dispatch = useDispatch();
