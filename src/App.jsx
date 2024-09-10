@@ -8,6 +8,8 @@ import CategoryService from "./service/category.service";
 import RestaurantService from "./service/restauran.service";
 import Sign from "./pages/sign";
 import axios from "./service/api";
+import { getTableSuccess } from "./slice/table.slice";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,11 +18,6 @@ function App() {
     const { data } = await axios.get(`/table/table/${tableId}`);
 
     dispatch(getTableSuccess(data));
-    if (data) {
-      localStorage.setItem("tableId", data._id);
-      navigate("/");
-      // window.location.reload();
-    }
   };
 
   useEffect(() => {
