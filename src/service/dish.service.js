@@ -5,7 +5,7 @@ import {
 } from "../slice/dish.slice";
 import axios from "./api";
 
-const id = "66dec1fc25c5865fd12bbb0e";
+const id = localStorage.getItem("userId");
 
 const DishService = {
   async getDish(dispatch) {

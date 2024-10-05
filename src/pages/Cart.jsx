@@ -6,6 +6,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../service/api";
 import { addProduct } from "../slice/addProduct.slice";
+import MsgBox from "../components/msg";
 
 const Cart = () => {
   const { selectedProduts } = useSelector((state) => state.product);
@@ -17,6 +18,8 @@ const Cart = () => {
   const [code, setCode] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const { table } = useSelector((state) => state.table);
+  const [status, setStatus] = useState("");
+  const [msg, setMgs] = useState("");
 
   let totalPrice =
     code && code.worked == false && code.discount
@@ -59,15 +62,19 @@ const Cart = () => {
 
       if (order) {
         dispatch(addProduct([]));
-        navigate("/");
+        setMgs("Buyurtmangiz qabul qilindi");
+        setStatus("success");
       }
     } catch (error) {
+      setMgs("Buyurtmangiz qabul qilinmadi");
+      setStatus("failure");
       console.error("Error creating order:", error);
     }
   };
 
   return (
     <div className="h-screen flex flex-col">
+      {msg ? <MsgBox message={msg} status={status} /> : ""}
       <div className="sticky top-0 flex justify-center items-center bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-br-[25px] py-4 text-white text-xl font-bold">
         <Link to="/" className="absolute left-4">
           <IoIosArrowBack />

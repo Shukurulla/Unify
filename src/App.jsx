@@ -7,13 +7,25 @@ import DishService from "./service/dish.service";
 import CategoryService from "./service/category.service";
 import RestaurantService from "./service/restauran.service";
 import Sign from "./pages/sign";
+import axios from "./service/api";
+import { getTableSuccess } from "./slice/table.slice";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.restaurant);
+
+  const fetchTable = async (tableId) => {
+    const { data } = await axios.get(`/table/table/${tableId}`);
+
+    dispatch(getTableSuccess(data));
+  };
+
   useEffect(() => {
     if (localStorage.getItem("userId")) {
       RestaurantService.getRestaurant(dispatch, localStorage.getItem("userId"));
+    }
+    if (localStorage.getItem("tableId")) {
+      fetchTable(localStorage.getItem("tableId"));
     }
     DishService.getDish(dispatch);
     CategoryService.getCategory(dispatch);

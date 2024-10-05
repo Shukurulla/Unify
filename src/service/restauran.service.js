@@ -4,6 +4,7 @@ import {
   getRestaurantSuccess,
 } from "../slice/restauran.slice";
 import axios from "./api";
+
 const RestaurantService = {
   async getRestaurant(dispatch, id) {
     dispatch(getRestaurantStart());
