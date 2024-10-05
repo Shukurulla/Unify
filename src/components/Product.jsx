@@ -34,7 +34,7 @@ const Product = ({ data }) => {
   };
 
   return (
-    <div className="grow relative p-4 bg-white rounded-[20px] flex flex-col items-center  p-4 shadow-[0_-4px_14px_0_#00000014]">
+    <div className="grow relative  bg-white rounded-[20px] flex flex-col items-center  p-4 shadow-[0_-4px_14px_0_#00000014]">
       <div className="size-28">
         <img
           className="mx-auto object-contain h-full"

@@ -87,20 +87,40 @@ const Home = () => {
             onChange={(e) => setSearchInputValue(e.target.value)}
           />
         </label>
-        {categories.map((item) => (
-          <div key={item._id} className="mt-[20px]">
-            <h2 className="category">{item.name}</h2>
-            <div className="row">
-              {dishes
-                .filter((c) => c.category.name == item.name)
-                .map((item) => (
-                  <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-                    <Product data={item} />
-                  </div>
-                ))}
-            </div>
-          </div>
-        ))}
+        {searchInputValue == ""
+          ? categories.map((item) => (
+              <div key={item._id} className="mt-[20px]">
+                <h2 className="category">{item.name}</h2>
+                <div className="row">
+                  {dishes
+                    .filter((c) =>
+                      searchInputValue == ""
+                        ? c.category.name == item.name
+                        : c.name
+                            .toLowerCase()
+                            .slice(0, searchInputValue.length) ==
+                          searchInputValue
+                    )
+                    .map((item) => (
+                      <div className="col-lg-3 mt-4  col-md-4 col-sm-6 col-12">
+                        <Product data={item} />
+                      </div>
+                    ))}
+                </div>
+              </div>
+            ))
+          : dishes
+              .filter((c) =>
+                searchInputValue == ""
+                  ? c.category.name == item.name
+                  : c.name.toLowerCase().slice(0, searchInputValue.length) ==
+                    searchInputValue
+              )
+              .map((item) => (
+                <div className="col-lg-3 mt-4  col-md-4 col-sm-6 col-12">
+                  <Product data={item} />
+                </div>
+              ))}
       </div>
     </div>
   );
