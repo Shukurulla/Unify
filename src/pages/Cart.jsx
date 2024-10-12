@@ -75,7 +75,7 @@ const Cart = () => {
   return (
     <div className="h-screen flex flex-col">
       {msg ? <MsgBox message={msg} status={status} /> : ""}
-      <div className="sticky top-0 flex justify-center items-center bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-br-[25px] py-4 text-white text-xl font-bold">
+      <div className="sticky top-0 flex justify-center items-center bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-br-[25px] py-3 text-white text-xl font-bold">
         <Link to="/" className="absolute left-4">
           <IoIosArrowBack />
         </Link>
@@ -93,7 +93,7 @@ const Cart = () => {
           </div>
         ))}
       </div>
-      <div className="sticky bottom-0 bg-[#EDF2F6] p-4 flex flex-col gap-4 rounded-tl-3xl w-full">
+      <div className="sticky bottom-0 bg-[#EDF2F6] p-3 flex flex-col gap-4 rounded-tl-3xl w-full">
         <div className="flex items-center gap-2 rounded-[50px_0_100px_50px] bg-white p-4">
           <svg
             width="24"
@@ -156,7 +156,7 @@ const Cart = () => {
         <button
           onClick={() => orderHandler()}
           disabled={isLoading}
-          className="bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-full py-3 text-white font-semibold text-xl"
+          className="bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-full py-2 text-white font-semibold text-xl"
         >
           {!isLoading ? "Buyırıw" : "Jiberilmekte"}
         </button>

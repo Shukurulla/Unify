@@ -18,7 +18,12 @@ const Product = ({ data }) => {
         addProduct([
           ...selectedProduts,
           {
-            dish: { id: data._id, name: data.name, price: data.price },
+            dish: {
+              id: data._id,
+              name: data.name,
+              price: data.price,
+              image: data.image,
+            },
             quantity: 1,
           },
         ])
