@@ -54,13 +54,15 @@ const Cart = () => {
     };
 
     try {
-      const order = await axios.post("orders/create-order", orderSchema, {
+      const { data } = await axios.post("orders/create-order", orderSchema, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
 
-      if (order) {
+      if (data) {
+        console.log(data);
+
         dispatch(addProduct([]));
         setMgs("Buyurtmangiz qabul qilindi");
         setStatus("success");
