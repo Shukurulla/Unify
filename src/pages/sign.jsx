@@ -19,13 +19,12 @@ const Sign = () => {
 
     if (data) {
       const { data } = await axios.get(`/table/table/${tableId}`);
-      console.log(data);
 
       dispatch(getTableSuccess(data));
       if (data) {
         localStorage.setItem("tableId", data._id);
         navigate("/");
-        // window.location.reload();
+        window.location.reload();
       }
     }
   };
