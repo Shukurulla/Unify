@@ -11,6 +11,7 @@ const Product = ({ data }) => {
   const [isChecked, setIsChecked] = useState(false);
   const { selectedProduts } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  const f = new Intl.NumberFormat("es-sp");
 
   const addProducts = () => {
     if (!isChecked) {
@@ -49,7 +50,7 @@ const Product = ({ data }) => {
       </div>
       <p className="font-semibold pt-2">{data.name}</p>
       <p className="bg-gradient-to-r from-[#8CD23C] to-[#417A00] bg-clip-text text-transparent font-semibold">
-        {data.price}
+        {f.format(data.price)}
       </p>
       <div className="absolute top-full -translate-y-1/2 rounded-full size-16 flex justify-center items-center wrapper">
         <div className="rounded-br-[20px] shadow-[4px_6px_0_0_#F6F4F2] size-5 absolute left-[-16px] top-[12px]"></div>
