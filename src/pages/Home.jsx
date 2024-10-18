@@ -2,12 +2,15 @@ import { CiSearch } from "react-icons/ci";
 import Navbar from "../components/Navbar";
 import { MdShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Product from "../components/Product";
 import { FaBellConcierge, FaCartShopping } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/cart/CartItem";
 import Loading from "../components/loading";
+import RestaurantService from "../service/restauran.service.js";
+import DishService from "../service/dish.service.js";
+import CategoryService from "../service/category.service.js";
 
 const Home = () => {
   const { categories } = useSelector((state) => state.category);
@@ -18,6 +21,13 @@ const Home = () => {
   const [floatingButtonIsOpen, setFloatingButton] = useState(false);
   const waitersRef = useRef();
   const cartRef = useRef();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    DishService.getDish(dispatch);
+    CategoryService.getCategory(dispatch);
+    RestaurantService.getRestaurant(dispatch, localStorage.getItem("userId"));
+  }, []);
 
   return isLoading ? (
     <Loading />
@@ -84,7 +94,7 @@ const Home = () => {
             placeholder="Izlew"
             className="grow outline-none"
             value={searchInputValue}
-            onChange={(e) => setSearchInputValue(e.target.value)}
+            onChange={(e) => setSearchInputValue(e.target.value.toLowerCase())}
           />
         </label>
         {searchInputValue == ""
@@ -99,7 +109,7 @@ const Home = () => {
                         : c.name
                             .toLowerCase()
                             .slice(0, searchInputValue.length) ==
-                          searchInputValue
+                          searchInputValue.toLowerCase()
                     )
                     .map((item) => (
                       <div className="col-lg-3 mt-4  col-md-4 col-sm-6 col-12">
