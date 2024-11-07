@@ -15,7 +15,9 @@ function App() {
   const dispatch = useDispatch();
 
   const fetchTable = async (tableId) => {
-    const { data } = await axios.get(`/table/table/${tableId}`);
+    const { data } = await axios.get(
+      `https://kep-ket-api.vercel.app/api/table/table/${tableId}`
+    );
 
     dispatch(getTableSuccess(data));
   };

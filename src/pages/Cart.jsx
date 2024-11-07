@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "../service/api";
 import { addProduct } from "../slice/addProduct.slice";
 import MsgBox from "../components/msg";
+import { io } from "socket.io-client";
+import socket from "../utilities/socket.config.js";
 
 const Cart = () => {
   const { selectedProduts } = useSelector((state) => state.product);
@@ -53,25 +55,32 @@ const Cart = () => {
       promoCode: code && code._id ? code._id : "", // Ensure code._id is accessed safely
     };
 
-    try {
-      const { data } = await axios.post("orders/create-order", orderSchema, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+    // try {
+    //   const { data } = await axios.post("orders/create-order", orderSchema, {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //     },
+    //   });
 
-      if (data) {
-        console.log(data);
+    //   if (data) {
+    //     console.log(data);
 
-        dispatch(addProduct([]));
-        setMgs("Buyurtmangiz qabul qilindi");
-        setStatus("success");
-      }
-    } catch (error) {
-      setMgs("Buyurtmangiz qabul qilinmadi");
-      setStatus("failure");
-      console.error("Error creating order:", error);
-    }
+    //     // Yangi buyurtma haqida Socket.io orqali xabar yuborish
+    //     socket.emit("newOrder", data); // Yangi buyurtma ma'lumotlarini yuborish
+
+    //     dispatch(addProduct([]));
+    //     setMgs("Buyurtmangiz qabul qilindi");
+    //     setStatus("success");
+    //   }
+    // } catch (error) {
+    //   setMgs("Buyurtmangiz qabul qilinmadi");
+    //   setStatus("failure");
+    //   console.error("Error creating order:", error);
+    // }
+    socket.emit("send_order", orderSchema);
+    socket.on("order_response", async (order) => {
+      console.log(order);
+    });
   };
 
   return (
