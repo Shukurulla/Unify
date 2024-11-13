@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CartItem from "../components/cart/CartItem";
 // import { products } from '../data/db'
@@ -9,6 +9,7 @@ import { addProduct } from "../slice/addProduct.slice";
 import MsgBox from "../components/msg";
 import { io } from "socket.io-client";
 import socket from "../utilities/socket.config.js";
+import { toast } from "react-hot-toast";
 
 const Cart = () => {
   const { selectedProduts } = useSelector((state) => state.product);
@@ -78,10 +79,21 @@ const Cart = () => {
     //   console.error("Error creating order:", error);
     // }
     socket.emit("send_order", orderSchema);
-    socket.on("order_response", async (order) => {
-      console.log(order);
+    socket.once("order_response", (order) => {
+      if (order) {
+        dispatch(addProduct([]));
+        setIsLoading(false);
+        navigate("/");
+        toast.success("Buyurtmangiz yetkazildi");
+      }
     });
   };
+
+  useEffect(() => {
+    return () => {
+      socket.off("order_response"); // Cleanup listener on unmount
+    };
+  }, []);
 
   return (
     <div className="h-screen flex flex-col">
@@ -166,6 +178,9 @@ const Cart = () => {
         </ul>
         <button
           onClick={() => orderHandler()}
+          style={{
+            pointerEvents: `${selectedProduts.length > 0 ? "all" : "none"}`,
+          }}
           disabled={isLoading}
           className="bg-gradient-to-r from-[#8CD23C] to-[#417A00] rounded-full py-2 text-white font-semibold text-xl"
         >

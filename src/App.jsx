@@ -10,6 +10,7 @@ import Sign from "./pages/sign";
 import axios from "./service/api";
 import { getTableSuccess } from "./slice/table.slice";
 import { useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Toaster />
       <Routes>
         <Route path="/table/:id" element={<Sign />} />
         <Route path="/" element={<Home />} />
