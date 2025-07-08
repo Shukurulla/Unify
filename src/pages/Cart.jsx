@@ -30,7 +30,7 @@ const Cart = () => {
       : productPrice; // Initialize as null instead of 0
 
   const compareCode = (code) => {
-    fetch(`https://kep-ket-api.vercel.app/api/promocode/code/${code}`)
+    fetch(`http://localhost:1234/api/promocode/code/${code}`)
       .then((res) => res.json())
       .then((data) => {
         setCode(data[0] || null); // Ensure it's an object or null
@@ -44,6 +44,7 @@ const Cart = () => {
 
   const orderHandler = async () => {
     setIsLoading(true);
+
     const orderSchema = {
       restaurantId: localStorage.getItem("userId"),
       tableNumber: {
@@ -79,9 +80,12 @@ const Cart = () => {
     //   console.error("Error creating order:", error);
     // }
     socket.emit("send_order", orderSchema);
+    console.log(orderSchema);
+
     socket.once("order_response", (order) => {
       if (order) {
         dispatch(addProduct([]));
+        log;
         setIsLoading(false);
         navigate("/");
         toast.success("Buyurtmangiz yetkazildi");
